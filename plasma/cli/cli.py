@@ -173,6 +173,12 @@ def challenge_exit(client, blknum, txindex, oindex, confirm_sig_hex, account):
     client.challenge_exit(blknum, txindex, oindex, confirmSig, account)
     print("Submitted challenge exit")
 
+@cli.command()
+@click.pass_obj
+def debug(client):
+    client.child_chain.get_all_blocks()
+    print("Submitted challenge exit")
+
 
 if __name__ == '__main__':
     cli()

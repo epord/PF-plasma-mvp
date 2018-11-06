@@ -52,3 +52,9 @@ class ChildChain(object):
 
     def get_current_block(self):
         return self.current_block
+
+    def get_all_blocks(self):
+        for b in list(self.chain.blocks.values()):
+            b.print_debug()
+        return ""
+        # return self.chain.blocks

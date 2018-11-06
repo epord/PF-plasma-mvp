@@ -57,5 +57,12 @@ class Block(rlp.Serializable):
             input_id = encode_utxo_id(*i)
             self.spent_utxos[input_id] = True
 
+    def print_debug(self):
+        print("-------------------------")
+        print("\t\t\t BLOCK NUMBER " + str(self.number))
+        for tx in self.transaction_set:
+            tx.print_debug()
+        print("-------------------------")
+
 
 UnsignedBlock = Block.exclude(['sig'])

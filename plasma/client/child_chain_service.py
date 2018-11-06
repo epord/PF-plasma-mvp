@@ -37,6 +37,9 @@ class ChildChainService(object):
     def get_current_block(self):
         return self.send_request("get_current_block", [])
 
+    def get_all_blocks(self):
+        return self.send_request("get_all_blocks", [])
+
     def get_block(self, blknum):
         return self.send_request("get_block", [blknum])
 

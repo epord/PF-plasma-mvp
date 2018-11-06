@@ -93,5 +93,12 @@ class Transaction(rlp.Serializable):
     def sign2(self, key):
         self.sig2 = sign(self.hash, key)
 
+    def print_debug(self):
+        print("******")
+        print("Transaction :")
+        print("1) blknum: " + str(self.blknum1) + " txindex: " + str(self.txindex1) + " oindex " + str(self.oindex1) + " sig: " + str(self.sig1) + " amount " + str(self.amount1) + " spent " + str(self.spent1))
+        print("2) blknum: " + str(self.blknum2) + " txindex: " + str(self.txindex2) + " oindex " + str(self.oindex2) + " sig: " + str(self.sig2) + " amount " + str(self.amount2) + " spent " + str(self.spent2))
+        print("******")
+
 
 UnsignedTransaction = Transaction.exclude(['sig1', 'sig2'])

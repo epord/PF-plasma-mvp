@@ -1,3 +1,5 @@
+from plasma_core.block import Block
+
 from plasma_core.utils.transactions import decode_utxo_id, encode_utxo_id
 from plasma_core.utils.address import address_to_hex
 from plasma_core.constants import NULL_SIGNATURE
@@ -5,6 +7,8 @@ from plasma_core.exceptions import (InvalidBlockSignatureException,
                                     InvalidTxSignatureException,
                                     TxAlreadySpentException,
                                     TxAmountMismatchException)
+import rlp
+from rlp.sedes import binary, CountableList, big_endian_int
 
 
 class Chain(object):

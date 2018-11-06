@@ -1,4 +1,5 @@
 import rlp
+from plasma_core.chain import Chain
 from werkzeug.wrappers import Request, Response
 from werkzeug.serving import run_simple
 from jsonrpc import JSONRPCResponseManager, dispatcher
@@ -23,6 +24,7 @@ def application(request):
     dispatcher["get_current_block"] = lambda: rlp.encode(child_chain.get_current_block(), Block).hex()
     dispatcher["get_current_block_num"] = lambda: child_chain.get_current_block_num()
     dispatcher["get_block"] = lambda blknum: rlp.encode(child_chain.get_block(blknum), Block).hex()
+    dispatcher["get_all_blocks"] = lambda: child_chain.get_all_blocks()
     response = JSONRPCResponseManager.handle(
         request.data, dispatcher)
     return Response(response.json, mimetype='application/json')
